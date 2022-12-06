@@ -21,3 +21,5 @@ The `sfdx-project.json` file contains useful configuration information for your 
 
 - some chenges. 
 - change in dev branch.
+- change in dev branch again, dev branch exits in remote repository, so we push 'git push'
+- if there are some changes in remote repo, and we want to get in local, we 'git pull'
