@@ -31,4 +31,15 @@ public class DmlDemo9Test {
        
         
     }
+    @isTest
+    private static void dmlInsert45test() {
+        Salesforce_Project__c sp = new Salesforce_Project__c();
+        sp.Project_Name__c = 'SP test';
+        sp.Status__c = 'New';
+        insert sp;
+        DmlDemo9.dmlInsertDemo_5();
+        List<Salesforce_Ticket__c> listSt = [select id, Subject__c, Salesforce_Project__c from Salesforce_Ticket__c where Subject__c= 'Learn apex dml'];
+        SYSTEM.assertEquals(sp.Id, listSt[0].salesforce_project__c);
+    }
+
 }
