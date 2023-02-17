@@ -10,15 +10,14 @@ public class ContactTriggerHandler {
             }
         }
     }
+
     public static void updateContactValidation2(List<contact> conTriggerNew, List<contact> conTriggerOld,
-    Map<id, contact> conTriggerNewMap, map<id, contact> conTriggerOldMap){
-        for (contact eachContact : conTriggerNew){
-            if(eachContact.LeadSource != conTriggerOldMap.get(eachContact.id).LeadSource){
-                eachContact.LeadSource.addError('CANNOT update LEAD SOURCE. Please behave !!');
+                    Map<id, contact> conTriggerNewMap, map<id, contact> conTriggerOldMap) {
+        for (Contact eachContact : conTriggerNew) {
+            if (eachContact.LeadSource != conTriggerOldMap.get(eachContact.Id).LeadSource) {
+                string customMsg = system.label.contactValidation2;
+                eachContact.LeadSource.addError(customMsg);
             }
         }
-
-
     }
-        
-    }
+}

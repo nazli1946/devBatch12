@@ -3,6 +3,12 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
     if (Trigger.isBefore) {
         AccountTriggerHandler.updateAccountDescription(trigger.new, trigger.old, trigger.newMap, trigger.oldMap);
     }
+    if (trigger.isAfter && trigger.isInsert) {
+
+        AccountQueueableExample aq = new AccountQueueableExample(trigger.new);
+        id jobId = system.enqueueJob(aq);
+        
+    }
     if(trigger.isAfter && trigger.isUpdate){
         //call method to update vio fields of all contacts.
         AccountTriggerHandler.updateVIPforContacts(trigger.new, trigger.old, trigger.newMap, trigger.oldMap);
